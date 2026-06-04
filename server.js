@@ -20,6 +20,14 @@ const server = http.createServer((req, res) => {
   const budgetSpent = p.budgetSpent || "";
   const status = p.status || "";
   const type = p.type || "";
+  const images = p.images || "";
+
+  const imageHTML = images ? `
+  <div style="margin-top:15px;">
+    <label style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;">Site Image</label>
+    <br>
+    <img src="${images}" style="width:100%;max-height:300px;object-fit:cover;border-radius:8px;margin-top:8px;" />
+  </div>` : "";
 
   const html = `<!DOCTYPE html>
 <html>
@@ -80,6 +88,7 @@ const server = http.createServer((req, res) => {
   </div>
   <div class="section-title">PROJECT SUMMARY</div>
   <div class="field"><label>Progress Summary</label><p style="font-weight:normal;line-height:1.6">${progressSummary}</p></div>
+  ${imageHTML}
   <div class="section-title">FINANCIAL SUMMARY</div>
   <div class="financial-box">
     <div class="fin-row">
